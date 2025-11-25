@@ -10,8 +10,13 @@ $allowed = ['list'];
 use App\DB\DBConnect;
 
 $DB = new DBConnect;
-$DB->connexion();
 var_dump($DB->getPDO());
+
+use App\ContactManager\ContactManager;
+
+$CM = new ContactManager;
+$results = $CM->findAll();
+var_dump($results);
 
 while(true) {
     $line = readline("Entrez votre commande : ");
