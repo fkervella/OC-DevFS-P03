@@ -11,6 +11,7 @@ spl_autoload_register(static function ($fqcn): void {
 
 use App\DB\DBConnect;
 use PDOException;
+use App\Contact\Contact;
 
 class ContactManager{
 
@@ -20,18 +21,33 @@ class ContactManager{
         $this->dbConnect = new DBConnect();
     }
 
-    public function findAll():array {
+    public function findAll(): ?array {
         try {
             $result = array();
             $db = $this->dbConnect->getPDO();
             $findAllQuery = $db->prepare("SELECT * FROM contact");
             $findAllQuery->execute();
-            $result = $findAllQuery->fetchAll();
+            $results = $findAllQuery->fetchAll();
+
+            foreach ($results as $result) {
+                if(array_key_exists('id', $result) 
+                    && array_key_exists('name', $result) 
+                    && array_key_exists('email', $result) 
+                    && array_key_exists('phone_number', $result)) {
+
+                    $contacts[] = new Contact(
+                        $result['id'], 
+                        $result['name'], 
+                        $result['email'], 
+                        $result['phone_number']);
+                }
+            }
+
         } catch(\PDOException $e) {
             echo 'Erreur : ' . $e->getMessage();
         }
 
-        return $result;
+        return $contacts;
     }    
 }
 
