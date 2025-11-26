@@ -13,7 +13,7 @@ $DB = new DBConnect;
 var_dump($DB->getPDO());
 
 use App\ContactManager\ContactManager;
-use App\Contact\Contact;
+//use App\Contact\Contact;
 
 while(true) {
     $line = readline("Entrez votre commande : ");
