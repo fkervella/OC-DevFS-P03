@@ -13,16 +13,20 @@ $DB = new DBConnect;
 var_dump($DB->getPDO());
 
 use App\ContactManager\ContactManager;
-
-$CM = new ContactManager;
-$results = $CM->findAll();
-var_dump($results);
+use App\Contact\Contact;
 
 while(true) {
     $line = readline("Entrez votre commande : ");
 
-    if(in_array($line, $allowed))
-        echo "Affichage de la liste\n";
+    if(in_array($line, $allowed)) {
+    
+        $CM = new ContactManager;
+        $results = $CM->findAll();
+    
+        foreach ($results as $result) {
+            echo $result->toString() . PHP_EOL;
+        }
+    }
     else
         echo "Vous avez saisi : $line\n";
 }
