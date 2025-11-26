@@ -13,18 +13,15 @@ $DB = new DBConnect;
 var_dump($DB->getPDO());
 
 use App\ContactManager\ContactManager;
-//use App\Contact\Contact;
+use App\Command\Command;
 
 while(true) {
     $line = readline("Entrez votre commande : ");
 
     if(in_array($line, $allowed)) {
-    
-        $CM = new ContactManager;
-        $results = $CM->findAll();
-    
-        foreach ($results as $result) {
-            echo $result->toString() . PHP_EOL;
+
+        if ($line === 'list') {
+            Command::list();
         }
     }
     else
