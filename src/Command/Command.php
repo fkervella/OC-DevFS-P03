@@ -15,8 +15,12 @@ class Command{
         }
     }
 
-    public static function detail() {
+    public static function detail($id) {
+        $CM = new ContactManager;
+        $result = $CM->find($id);
 
+        if (!is_null($result))
+            echo $result->toString() . PHP_EOL;
     }
 
     public static function create() {
