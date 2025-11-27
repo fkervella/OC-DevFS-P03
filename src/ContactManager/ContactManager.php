@@ -56,9 +56,9 @@ class ContactManager{
 
         try {
             $db = $this->dbConnect->getPDO();
-            $findAllQuery = $db->prepare("SELECT * FROM contact WHERE id=:id");
-            $findAllQuery->execute(['id' => $id]);
-            $result = $findAllQuery->fetch(\PDO::FETCH_ASSOC);
+            $findQuery = $db->prepare("SELECT * FROM contact WHERE id=:id");
+            $findQuery->execute(['id' => $id]);
+            $result = $findQuery->fetch(\PDO::FETCH_ASSOC);
 
             if(is_array($result)
                 && array_key_exists('id', $result) 
@@ -78,6 +78,16 @@ class ContactManager{
         }
 
         return $contact;
+    }
+    
+    public function delete($id): void {
+        try{
+            $db = $this->dbConnect->getPDO();
+            $deleteQuery = $db->prepare("DELETE FROM contact WHERE id=:id");
+            $deleteQuery->execute(['id' => $id]);
+        } catch(\PDOException $e) {
+            echo 'Erreur : ' . e->getMessage();
+        }
     }    
     
 }

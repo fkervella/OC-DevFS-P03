@@ -27,8 +27,9 @@ class Command{
 
     }
 
-    public static function delete() {
-    
+    public static function delete($id) {
+        $CM = new ContactManager;
+        $CM->delete($id);
     }
 
     public static function modify() {

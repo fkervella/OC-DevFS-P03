@@ -27,6 +27,13 @@ while(true) {
         else
             echo "detail non compris.\n";
     }
+    elseif(preg_match('/^delete (\d+)$/', $line, $command)) {
+        if(count($command) >= 2) {
+            Command::delete($command[1]);
+        }
+        else
+            echo "delete non compris.\n\n";
+    }
     else
         echo "Vous avez saisi : $line\n";
 }
