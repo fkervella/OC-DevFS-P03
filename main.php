@@ -5,7 +5,7 @@ spl_autoload_register(static function ($fqcn): void {
     require_once($path);
 });
 
-$allowed = ['list'];
+$allowed = ['list', 'help', 'quit'];
 
 use App\DB\DBConnect;
 
@@ -16,12 +16,18 @@ use App\ContactManager\ContactManager;
 use App\Command\Command;
 
 while(true) {
-    $line = readline("Entrez votre commande : ");
+    $line = readline("Entrez votre commande (help, list, detail, create, delete, modify, quit) : ");
 
     if(in_array($line, $allowed)) {
 
-        if ($line === 'list') {
+        if ('list' === $line) {
             Command::list();
+        }
+        elseif ('help' === $line) {
+            Command::help();
+        }
+        elseif ('quit' === $line) {
+            Command::quit();
         }
     }
     else
