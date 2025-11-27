@@ -38,7 +38,7 @@ class Command{
 
     public static function help() {
         echo "Help : affiche cette aide\n\n";
-        echo "detail : affiche le détail du contact\n\n";
+        echo "detail [id] : affiche le détail du contact\n\n";
         echo "list : liste les contacts\n\n";
         echo "create [name], [email], [phone number] : crée un contact\n\n";
         echo "delete [id] : supprime le contact\n\n";
