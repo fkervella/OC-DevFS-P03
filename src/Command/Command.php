@@ -40,7 +40,8 @@ class Command{
         echo "Help : affiche cette aide\n\n";
         echo "list : liste les contacts\n\n";
         echo "create [name], [email], [phone number] : crée un contact\n\n";
-        echo "delete [id] : supprime un contact\n\n";
+        echo "delete [id] : supprime le contact\n\n";
+        echo "modify [id] [name], [email], [phone number] : modifie le contact\n\n";
         echo "quit : quitte le programme\n\n";
         echo "Attention à la syntaxte des commandes, les espaces et les virgules sont importants.\n\n";
     }
