@@ -13,14 +13,17 @@ use App\DB\DBConnect;
 use PDOException;
 use App\Contact\Contact;
 
+//La classe ContactManager est l'interface avec la base de données. Elle exécute les commandes passées en les transformant en ordre vers la base de données
 class ContactManager{
 
     private $dbConnect;
 
+    //Création du lien avec la base de données
     public function __construct() {
         $this->dbConnect = new DBConnect();
     }
 
+    //Recherche des informations de tous les contacts
     public function findAll(): ?array {
         try {
             $result = array();
@@ -50,6 +53,7 @@ class ContactManager{
         return $contacts;
     }
 
+    //Recherche des informations d'un seul contact
     public function find($id): ?Contact {
 
         $contact = null;
@@ -79,7 +83,8 @@ class ContactManager{
 
         return $contact;
     }
-    
+
+    //suppression d'un contact
     public function delete($id): void {
         try{
             $db = $this->dbConnect->getPDO();
@@ -90,6 +95,7 @@ class ContactManager{
         }
     }    
 
+    //création d'un contact
     public function create($name, $mail, $phoneNumber) {
         try{
             $db = $this->dbConnect->getPDO();
@@ -103,6 +109,8 @@ class ContactManager{
             echo 'Erreur : ' . $e->getMessage();
         }
     }
+
+    //Modification d'un contact
     public function update($id, $name, $mail, $phoneNumber) {
         try{
             $db = $this->dbConnect->getPDO();

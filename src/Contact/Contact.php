@@ -2,6 +2,7 @@
 
 namespace App\Contact;
 
+//la classe Contact stocke les informations d'un seul contact (id, name, email, phone number)
 class Contact {
 
     public function __construct(private $id, private $name, private $email, private $phone_number) {
@@ -19,6 +20,7 @@ class Contact {
         $this->name = $name;
     }
 
+    //Renvoi des informations d'un contact
     public function __toString() : string {
         return $this->id . ',' . $this->name . ',' . $this->email . ',' . $this->phone_number;
     }
