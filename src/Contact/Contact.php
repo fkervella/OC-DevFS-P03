@@ -19,7 +19,7 @@ class Contact {
         $this->name = $name;
     }
 
-    public function toString() : string {
+    public function __toString() : string {
         return $this->id . ',' . $this->name . ',' . $this->email . ',' . $this->phone_number;
     }
 

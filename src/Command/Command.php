@@ -11,7 +11,7 @@ class Command{
         $results = $CM->findAll();
     
         foreach ($results as $result) {
-            echo $result->toString() . PHP_EOL;
+            echo $result . PHP_EOL;
         }
     }
 
@@ -20,7 +20,7 @@ class Command{
         $result = $CM->find($id);
 
         if (!is_null($result))
-            echo $result->toString() . PHP_EOL;
+            echo $result . PHP_EOL;
     }
 
     public static function create($name, $mail, $phoneNumber) {
