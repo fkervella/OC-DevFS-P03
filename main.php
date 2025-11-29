@@ -34,6 +34,13 @@ while(true) {
         else
             echo "delete non compris.\n\n";
     }
+    elseif(preg_match('/^create ([a-zA-Z]+), ([a-zA-Z]+@[a-zA-Z]+.[a-zA-Z]+), (\d+)$/', $line, $command)) {
+        if(count($command) >= 2) {
+            Command::create($command[1], $command[2], $command[3]);
+        }
+        else
+            echo "create non compris.\n\n";
+    }
     else
         echo "Vous avez saisi : $line\n";
 }

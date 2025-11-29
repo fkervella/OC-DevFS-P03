@@ -89,7 +89,20 @@ class ContactManager{
             echo 'Erreur : ' . e->getMessage();
         }
     }    
-    
+
+    public function create($name, $mail, $phoneNumber) {
+        try{
+            $db = $this->dbConnect->getPDO();
+            $createQuery = $db->prepare('INSERT INTO contact (name, email, phone_number) VALUES (:name, :email, :phoneNumber)');
+            $createQuery->execute([
+                    'name' => $name,
+                    'email' => $mail,
+                    'phoneNumber' => $phoneNumber,
+                ]);
+        } catch(\PDOException $e) {
+            echo 'Erreur : ' . $e->getMessage();
+        }
+    }
 }
 
 ?>

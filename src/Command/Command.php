@@ -23,8 +23,9 @@ class Command{
             echo $result->toString() . PHP_EOL;
     }
 
-    public static function create() {
-
+    public static function create($name, $mail, $phoneNumber) {
+        $CM = new ContactManager;
+        $CM->create($name, $mail, $phoneNumber);
     }
 
     public static function delete($id) {
