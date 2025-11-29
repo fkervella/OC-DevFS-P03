@@ -33,8 +33,9 @@ class Command{
         $CM->delete($id);
     }
 
-    public static function modify() {
-
+    public static function update($id, $name, $mail, $phoneNumber) {
+        $CM = new ContactManager;
+        $CM->update($id, $name, $mail, $phoneNumber);
     }
 
     public static function quit() {

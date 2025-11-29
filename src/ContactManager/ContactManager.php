@@ -103,6 +103,21 @@ class ContactManager{
             echo 'Erreur : ' . $e->getMessage();
         }
     }
+    public function update($id, $name, $mail, $phoneNumber) {
+        try{
+            $db = $this->dbConnect->getPDO();
+            $updateQuery = $db->prepare('UPDATE contact SET name=:name, email=:email, phone_number=:phoneNumber WHERE id=:id');
+            $updateQuery->execute([
+                'id' => $id,
+                'name' => $name,
+                'email' => $mail,
+                'phoneNumber' => $phoneNumber,
+            ]);
+        } catch(\PDOException $e) {
+            echo 'Erreur : ' . $e->getMessage();
+        }
+    }
+
 }
 
 ?>
